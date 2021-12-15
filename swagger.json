@@ -1,0 +1,58 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Micro-backend",
+        "description": "Micro-backend por Daniel Carpio",
+        "version": "1.0"
+    },
+    "produces": ["application/json"],
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": ["Funciones"],
+                "description": "Permite hacer login en el sistema. Se deberá proporcionar una id",
+                "parameters": [
+                { "name": "Authentication", "in": "header", "type": "string", "required": "true" }],
+                "responses": {
+                    "200": {
+                        "description": "Se ha realizado login correctamente"
+                    },
+                    "400": {
+                        "description": "Falta la cabecera Authentication"
+                    },
+                    "401": {
+                        "description": "Usuario no encontrado/Fecha expirada"
+                    }
+                }
+            }
+        },
+        "/receiveData": {
+            "post": {
+                "tags": ["Funciones"],
+                "description": "Permite mandar datos para comprobar la fecha de expiración",
+                "parameters": [
+                    { "name": "access-token", "in": "header", "type": "string", "required": "true" },
+                    { "name": "data", "in": "body", "type": "integer", "required": "true",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "code": { "name": "code", "type": "integer", "required": "true" },
+                            "name": { "name": "name", "type": "string", "required": "true" },
+                            "description": { "name": "description", "type": "string", "required": false },
+                            "date": { "name": "date", "type": "string", "required": "true" }
+                        }
+                    }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se ha realizado correctamente"
+                    },
+                    "400": {
+                        "description": "Existe un problema en los datos de entrada"
+                    }
+                }
+            }
+        }
+    }
+}

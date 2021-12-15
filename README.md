@@ -1,5 +1,14 @@
 # test NodeJS
 
+Instalación: 
+
+npm install
+npm start
+
+URL de Swagger: http://localhost:8080/api-docs/
+
+
+
 Desarrolla un micro-banckend que cumpla con los siguientes parametros:
 
 1. Puerto de servicio: 8080
